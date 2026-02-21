@@ -1,0 +1,14 @@
+package com.prueba.PruebaSpring.services;
+
+import com.prueba.PruebaSpring.PruebaSpringApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
+
+public class ServletInitializer extends SpringBootServletInitializer {
+
+	@Override
+	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+		return application.sources(PruebaSpringApplication.class);
+	}
+
+}
