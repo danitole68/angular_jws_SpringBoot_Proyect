@@ -120,6 +120,9 @@ Actualmente, el directorio `angular/frontend` no ha sido agregado completamente 
 
 Puedes ver en el historial de git que hay cambios pendientes relacionados con el directorio de Angular que no han sido commiteados exitosamente.
 
+<img width="1378" height="510" alt="image" src="https://github.com/user-attachments/assets/1b69fec8-a2e5-4621-a1b5-5e7013341c6f" />
+
+
 ## Configuración de Variables de Entorno
 
 Crea un archivo `.env` en la raíz del proyecto (si es necesario) con las siguientes variables:
