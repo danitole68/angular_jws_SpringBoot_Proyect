@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
-@EnableMethodSecurity
+
 @RestController
 @RequestMapping("/api/films")
 public class FilmController {
@@ -21,14 +21,14 @@ public class FilmController {
     private FilmService filmService;
 
     // Obtener todas las películas
-    @PreAuthorize("hasAnyRole('USER','ADMIN')")
+
     @GetMapping
     public List<Films> getAllFilms() {
         return filmService.getFilms();
     }
 
     // Obtener una película por ID
-    @PreAuthorize("hasAnyRole('USER','ADMIN')")
+
     @GetMapping("/{id}")
     public ResponseEntity<Films> getFilmById(@PathVariable Long id) {
         return filmService.findById(id)
@@ -37,7 +37,7 @@ public class FilmController {
     }
 
     // Crear o actualizar una película
-    @PreAuthorize("hasRole('ADMIN')")
+
     @PostMapping
     public ResponseEntity<Object> createOrUpdateFilm(@RequestBody Films film) {
         if (film.getId() == null) { // Crear nueva película
@@ -58,7 +58,7 @@ public class FilmController {
     }
 
     // Eliminar una película por ID
-    @PreAuthorize("hasRole('ADMIN')")
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteFilm(@PathVariable Long id) {
         filmService.deleteFilm(id);

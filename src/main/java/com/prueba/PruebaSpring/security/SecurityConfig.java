@@ -13,7 +13,7 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import java.util.List;
 
 @Configuration
-@EnableMethodSecurity
+
 public class SecurityConfig {
 
     @Autowired
@@ -27,8 +27,7 @@ public class SecurityConfig {
                 .cors(cors -> {})
                 .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class).csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/auth/**").permitAll()
-                        .requestMatchers("/api/**").authenticated()
+                        .anyRequest().permitAll()
                 );
 
         return http.build();

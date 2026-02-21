@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
-@EnableMethodSecurity
+
 @RestController
 @RequestMapping("/api/discs")
 public class DiscController {
@@ -20,13 +20,13 @@ public class DiscController {
     @Autowired
     private DiscService discService;
 
-    @PreAuthorize("hasAnyRole('USER','ADMIN')")
+
     @GetMapping
     public List<Disc> getAllDiscs() {
         return discService.getDiscs();
     }
 
-    @PreAuthorize("hasAnyRole('USER','ADMIN')")
+
     @GetMapping("/{id}")
     public ResponseEntity<Disc> getDiscById(@PathVariable Long id) {
         return discService.findById(id)
@@ -34,7 +34,7 @@ public class DiscController {
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
+
     @PostMapping
     public ResponseEntity<Object> createOrUpdateDisc(@RequestBody Disc disc) {
         if (disc.getId() == null) { // Alta
@@ -55,7 +55,7 @@ public class DiscController {
         }
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteDisc(@PathVariable Long id) {
         if (discService.deleteDisc(id)) {

@@ -2,6 +2,7 @@ package com.prueba.PruebaSpring.security;
 import com.prueba.PruebaSpring.models.User;
 
 
+import com.prueba.PruebaSpring.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.*;
 import org.springframework.stereotype.Service;

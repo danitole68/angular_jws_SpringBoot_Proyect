@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
-@EnableMethodSecurity
+
 @RestController
 @RequestMapping("/api/books")
 public class BookController {
@@ -21,12 +21,10 @@ public class BookController {
     private BookService bookService;
 
     @GetMapping
-    @PreAuthorize("hasAnyRole('USER','ADMIN')")
     public List<Book> getAllBooks() {
         return bookService.getBooks();
     }
 
-    @PreAuthorize("hasAnyRole('USER','ADMIN')")
     @GetMapping("/{id}")
     public ResponseEntity<Book> getBookById(@PathVariable Long id) {
         return bookService.findById(id)
@@ -34,7 +32,6 @@ public class BookController {
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping
     public ResponseEntity<Object> createOrUpdateBook(@RequestBody Book book) {
         if (book.getId() == null) {
@@ -55,7 +52,6 @@ public class BookController {
         }
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteBook(@PathVariable Long id) {
         bookService.deleteBook(id);
